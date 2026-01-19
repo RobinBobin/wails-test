@@ -1,0 +1,14 @@
+{
+  "$schema": "https://wails.io/schemas/config.v2.json",
+  "author": {
+    "email": "r_shalimov@inbox.ru",
+    "name": "Ruben Shalimov"
+  },
+  "frontend:build": "pnpm build",
+  "frontend:dev:serverUrl": "http://localhost:8081",
+  "frontend:dev:watcher": "pnpm dev:watcher",
+  "frontend:dir": "../wails-ui/dist",
+  "name": "wails-wrapper",
+  "outputfilename": "wails-wrapper",
+  "wailsjsdir": "../wails-ui"
+}

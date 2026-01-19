@@ -1,0 +1,5 @@
+packages:
+  - wails-ui
+
+onlyBuiltDependencies:
+  - unrs-resolver
