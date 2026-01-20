@@ -36,7 +36,7 @@
   "name": "wails-ui",
   "private": true,
   "scripts": {
-    "build": "rm -rf ../wails-wrapper/frontend && expo export --output-dir ../wails-wrapper/frontend --platform web && touch ../wails-wrapper/frontend/.gitkeep",
+    "build": "rm -rf ../wails-wrapper/frontend && expo export --output-dir ../wails-wrapper/frontend --platform web ; touch ../wails-wrapper/frontend/.gitkeep",
     "dev:watcher": "BROWSER=none expo start --web",
     "lint": "expo lint",
     "reset-project": "node ./scripts/reset-project.js"
