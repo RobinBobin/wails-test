@@ -13,21 +13,20 @@ import (
 var assets embed.FS
 
 func main() {
-	// Create an instance of the app structure
 	app := NewApp()
 
-	// Create application with options
 	err := wails.Run(&options.App{
-		Title: "wails-wrapper",
 		AssetServer: &assetserver.Options{
 			Assets: assets,
 		},
 		BackgroundColour: &options.RGBA{R: 27, G: 38, B: 54, A: 1},
-		OnStartup:        app.startup,
 		Bind: []any{
 			app,
 		},
 		Frameless:        true,
+		OnBeforeClose:    app.onClose,
+		OnStartup:        app.onStartup,
+		Title:            "wails-wrapper",
 		WindowStartState: options.Fullscreen,
 	})
 

@@ -8,18 +8,28 @@ import (
 	"github.com/wailsapp/wails/v2/pkg/runtime"
 )
 
-// App struct
 type App struct{}
 
-// NewApp creates a new App application struct
 func NewApp() *App {
 	return &App{}
 }
 
-// startup is called at application startup
-func (a *App) startup(ctx context.Context) {
-	// Perform your setup here
+func (a *App) onClose(ctx context.Context) (prevent bool) {
+	result, err := runtime.MessageDialog(ctx, runtime.MessageDialogOptions{
+		Message: "Do you want to quit?",
+		Type:    runtime.QuestionDialog,
+	})
 
+	if err != nil {
+		log.Println(err)
+	}
+
+	prevent = result == "No"
+
+	return
+}
+
+func (a *App) onStartup(ctx context.Context) {
 	runtime.EventsOn(ctx, "resize", func(_ ...any) {
 		isFullscreen := runtime.WindowIsFullscreen(ctx)
 
@@ -31,7 +41,6 @@ func (a *App) startup(ctx context.Context) {
 	})
 }
 
-// Greet returns a greeting for the given name
 func (a *App) Greet(name string) string {
 	return fmt.Sprintf("Hello %s, It's show time!", name)
 }
